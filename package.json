@@ -4,11 +4,15 @@
   "description": "ads.txt crawler",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "dev": "nodemon server.js",
+    "client": "yarn run start --prefix client",
+    "heroku-postbuild": "yarn install --prefix client && yarn run build --prefix client"
   },
   "author": "saar amrani",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "express": "^4.17.3"
   }
 }
