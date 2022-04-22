@@ -1,7 +1,8 @@
 const ROUTES = {
-  HOME: "/",
+  HOME: "/api/",
+  HELLO: "/api/hello",
   TRAILING_STAR: "/*",
-  HELLO: "/hello",
+  PARSER: "/api/parse",
 };
 
 module.exports = ROUTES;

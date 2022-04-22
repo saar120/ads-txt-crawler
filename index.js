@@ -2,22 +2,25 @@ require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
+const parserRouter = require("./src/routes/parser.route");
 
 const { PORT } = process.env;
-const ROUTES = require("./src/constants/routes.constants");
-
-const app = express();
+const { PARSER, TRAILING_STAR, HELLO } = require("./src/constants/routes.constants");
 
 const publicPath = path.join(__dirname, "client/build");
+
+const app = express();
 
 app.use(express.json());
 app.use(express.static(publicPath));
 
-app.get(ROUTES.HELLO, (req, res) => {
+app.get(HELLO, (_, res) => {
   res.send("Hello World!");
 });
 
-app.get(ROUTES.TRAILING_STAR, (_, res) => {
+app.use(PARSER, parserRouter);
+
+app.get(TRAILING_STAR, (_, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
