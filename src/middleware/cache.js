@@ -1,4 +1,4 @@
-const redisClient = require("../db/redis");
+const redisClient = require("../cache/redis");
 
 const checkCache = (req, res, next) => {
   const { domain } = req.query;

@@ -1,4 +1,4 @@
-const redisClient = require("../db/redis");
+const redisClient = require("../cache/redis");
 const { adsTxtParser } = require("../utils/parser");
 const { getAdsTxt } = require("../utils/scraper");
 const { urlGenerator } = require("../utils/strings");
