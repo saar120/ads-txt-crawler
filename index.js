@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const parserRouter = require("./src/routes/parser.route");
+const checkCache = require("./src/middleware/cache");
 
 const { PORT } = process.env;
 const { PARSER, TRAILING_STAR, HELLO } = require("./src/constants/routes.constants");
@@ -18,7 +19,7 @@ app.get(HELLO, (_, res) => {
   res.send("Hello World!");
 });
 
-app.use(PARSER, parserRouter);
+app.use(PARSER, checkCache, parserRouter);
 
 app.get(TRAILING_STAR, (_, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));

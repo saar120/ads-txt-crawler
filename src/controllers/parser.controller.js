@@ -1,3 +1,4 @@
+const redisClient = require("../db/redis");
 const { adsTxtParser } = require("../utils/parser");
 const { getAdsTxt } = require("../utils/scraper");
 const { urlGenerator } = require("../utils/strings");
@@ -31,7 +32,9 @@ const getAdsData = async (req, res) => {
     });
   }
 
-  return res.json({ ok: true, domain: url.hostname, data: adsData });
+  redisClient.setex(domain, 3600, JSON.stringify({ data: adsData, host: url.hostname }));
+
+  return res.json({ ok: true, host: url.hostname, data: adsData });
 };
 
 module.exports = { getAdsData };
