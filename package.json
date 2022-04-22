@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon server.js",
-    "client": "yarn run start --prefix client",
-    "heroku-postbuild": "yarn install --prefix client && yarn run build --prefix client"
+    "client": "yarn --cwd client start",
+    "heroku-postbuild": "yarn --cwd client install && yarn --cwd client build"
   },
   "author": "saar amrani",
   "license": "ISC",
