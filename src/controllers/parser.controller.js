@@ -6,6 +6,8 @@ const { urlGenerator } = require("../utils/strings");
 const getAdsData = async (req, res) => {
   const { domain } = req.query;
 
+  const t0 = new Date().getTime();
+
   const url = urlGenerator(domain);
 
   if (!url) {
@@ -32,9 +34,13 @@ const getAdsData = async (req, res) => {
     });
   }
 
+  const t1 = new Date().getTime();
+
+  const time = t1 - t0;
+
   redisClient.setex(domain, 3600, JSON.stringify({ data: adsData, host: url.hostname }));
 
-  return res.json({ ok: true, host: url.hostname, data: adsData });
+  return res.json({ ok: true, host: url.hostname, time, data: adsData });
 };
 
 module.exports = { getAdsData };

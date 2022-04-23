@@ -10,7 +10,7 @@ const checkCache = (req, res, next) => {
     if (result !== null) {
       const { data, host } = JSON.parse(result);
       console.log("Cache hit!", host);
-      return res.json({ ok: true, cached: true, host, data });
+      return res.json({ ok: true, time: "cached", host, data });
     } else {
       next();
     }
