@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
+const cors = require("cors");
 const parserRouter = require("./src/routes/parser.route");
 const checkCache = require("./src/middleware/cache");
 
@@ -12,6 +13,11 @@ const publicPath = path.join(__dirname, "client/build");
 
 const app = express();
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://add-txt.herokuapp.com"],
+  })
+);
 app.use(express.json());
 app.use(express.static(publicPath));
 
