@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getAdsTxt } from "../../api/api";
 import SearchForm from "../../components/SearchForm";
 import DataTable from "./components/DataTable";
-import { Container, Typography } from "@mui/material";
+import { Container, Typography, Alert } from "@mui/material";
 import Spinner from "../../components/Spinner";
 
 export default function Home() {
@@ -34,7 +34,7 @@ export default function Home() {
       </Typography>
       <SearchForm onSubmit={handleDataFetch} />
       {isLoading && <Spinner size="lg" />}
-      {error && <div>{error}</div>}
+      {error && <Alert severity="error">{error}</Alert>}
       {adsData.ok && <DataTable domains={adsData.data} time={adsData.time} host={adsData.host} />}
     </Container>
   );
