@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import PropTypes from "prop-types";
+
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import MetaData from "./MetaData/MetaData";
 import downloadFile from "../../../utils/download";
@@ -10,7 +12,7 @@ const tCellSx = {
   cursor: "pointer",
 };
 
-export default function DataTable({ domains, time, host }) {
+function DataTable({ domains, time, host }) {
   const [tableData, setTableData] = useState(domains);
   const [sortDir, setSortDir] = useState("");
 
@@ -59,3 +61,11 @@ export default function DataTable({ domains, time, host }) {
     </>
   );
 }
+
+DataTable.propTypes = {
+  domains: PropTypes.array.isRequired,
+  time: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  host: PropTypes.string.isRequired,
+};
+
+export default DataTable;

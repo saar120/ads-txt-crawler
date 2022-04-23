@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { CircularProgress, Container } from "@mui/material";
 
 const spinnerSize = {
@@ -7,7 +8,7 @@ const spinnerSize = {
   md: 100,
 };
 
-export default function Spinner({ size }) {
+function Spinner({ size }) {
   return (
     <Container
       sx={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", mt: "10px" }}>
@@ -15,3 +16,9 @@ export default function Spinner({ size }) {
     </Container>
   );
 }
+
+Spinner.propTypes = {
+  size: PropTypes.string,
+};
+
+export default Spinner;

@@ -1,8 +1,11 @@
 import React from "react";
+
+import PropTypes from "prop-types";
+
 import { TextField, InputAdornment, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function SearchForm({ onSubmit }) {
+function SearchForm({ onSubmit }) {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const handleChange = (e) => {
@@ -39,3 +42,9 @@ export default function SearchForm({ onSubmit }) {
     </form>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default SearchForm;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getAdsTxt } from "../../api/api";
-import SearchForm from "./components/SearchForm";
+import SearchForm from "../../components/SearchForm";
 import DataTable from "./components/DataTable";
 import { Container, Typography } from "@mui/material";
 import Spinner from "../../components/Spinner";
