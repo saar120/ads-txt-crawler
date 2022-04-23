@@ -7,7 +7,7 @@ const parserRouter = require("./src/routes/parser.route");
 const checkCache = require("./src/middleware/cache");
 
 const { PORT } = process.env;
-const { PARSER, TRAILING_STAR, HELLO } = require("./src/constants/routes.constants");
+const { PARSER, TRAILING_STAR } = require("./src/constants/routes.constants");
 
 const publicPath = path.join(__dirname, "client/build");
 
@@ -20,10 +20,6 @@ app.use(
 );
 app.use(express.json());
 app.use(express.static(publicPath));
-
-app.get(HELLO, (_, res) => {
-  res.send("Hello World!");
-});
 
 app.use(PARSER, checkCache, parserRouter);
 
